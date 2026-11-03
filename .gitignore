@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+
+# Saídas de edição e intermediários locais (nunca versionar originais de cliente)
+*_edit_v*.mp4
+*_edit_v*.mov
+saida_*.mp4
+amostra_*.png
+loudness_stats.log
+metricas.txt
+
+# Dados locais, credenciais e mídias não sintéticas
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+media-local/
+originais/
