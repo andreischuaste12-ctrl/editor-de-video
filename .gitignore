@@ -3,15 +3,15 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Saídas de edição e intermediários locais (nunca versionar originais de cliente)
+# Local editing outputs and intermediates (never commit client source files)
 *_edit_v*.mp4
 *_edit_v*.mov
-saida_*.mp4
-amostra_*.png
+output_*.mp4
+sample_*.png
 loudness_stats.log
-metricas.txt
+metrics.txt
 
-# Dados locais, credenciais e mídias não sintéticas
+# Local data, credentials, and non-synthetic media
 .env
 .env.*
 !.env.example
@@ -20,5 +20,5 @@ metricas.txt
 *.p12
 *.pfx
 *.log
-media-local/
-originais/
+local-media/
+source-media/

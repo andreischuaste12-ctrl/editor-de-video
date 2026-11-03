@@ -1,13 +1,13 @@
-## Mudança
+## Change
 
-Descreva o problema e o comportamento resultante.
+Describe the problem and the resulting behavior.
 
-## Validação
+## Validation
 
-Liste os comandos ou cenários usados para verificar a mudança.
+List the commands or scenarios used to verify the change.
 
-## Privacidade e licença
+## Privacy and licensing
 
-- [ ] Não incluí credenciais, dados pessoais, caminhos locais ou mídia de pessoas/clientes.
-- [ ] Todo material novo é sintético ou possui licença compatível e atribuição adequada.
-- [ ] Aceito disponibilizar esta contribuição sob a Apache License 2.0.
+- [ ] I did not include credentials, personal data, local paths, or private media.
+- [ ] All new material is synthetic or has a compatible license and proper attribution.
+- [ ] I agree to provide this contribution under the Apache License 2.0.

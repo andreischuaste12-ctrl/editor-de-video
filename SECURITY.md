@@ -1,7 +1,7 @@
-# Segurança e privacidade
+# Security and privacy
 
-Não publique credenciais ou dados pessoais em issues, pull requests ou discussões públicas.
+Do not publish credentials or personal data in issues, pull requests, or public discussions.
 
-Se encontrar uma credencial, dado pessoal ou material privado no repositório, use o recurso privado de reporte de vulnerabilidade do GitHub, quando disponível. Se esse recurso não estiver habilitado, contate o mantenedor por um canal privado oferecido no perfil do repositório. Informe apenas o caminho e o tipo de exposição; evite copiar o conteúdo sensível.
+If you find a credential, personal data, or private material in the repository, use GitHub's private vulnerability reporting feature when available. If it is not enabled, contact the maintainer through a private channel listed on the repository profile. Report only the path and type of exposure; avoid copying the sensitive content.
 
-Revogue imediatamente qualquer credencial exposta. Remover um arquivo em um commit posterior não apaga versões anteriores: a correção deve limpar o histórico afetado e considerar caches, forks e clones já existentes.
+Immediately revoke any exposed credential. Removing a file in a later commit does not erase earlier versions. Remediation must clean the affected history and account for caches, forks, and existing clones.

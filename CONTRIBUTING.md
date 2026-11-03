@@ -1,21 +1,21 @@
-# Como contribuir
+# Contributing
 
-Issues, correções de documentação, novas fixtures sintéticas e melhorias nas receitas são bem-vindas.
+Issues, documentation corrections, new synthetic fixtures, and improvements to the editing recipes are welcome.
 
-1. Crie um fork e uma branch para a mudança.
-2. Faça alterações pequenas e explique a motivação e a forma de validação.
-3. Confirme que os exemplos funcionam na versão de FFmpeg declarada.
-4. Rode `git diff --check` e valide `evals/evals.json` como JSON antes de abrir o pull request.
-5. Abra o pull request descrevendo comportamento, testes e limitações.
+1. Fork the repository and create a branch for your change.
+2. Keep the change focused and explain its motivation and validation.
+3. Confirm that command examples work with the declared FFmpeg version.
+4. Run `git diff --check` and validate `evals/evals.json` as JSON before opening a pull request.
+5. Describe the resulting behavior, tests, and limitations in the pull request.
 
-Ao contribuir, você concorda que sua contribuição será licenciada sob a Apache License 2.0, conforme a seção de contribuições da licença. O nome e o e-mail associados aos commits podem ficar públicos no histórico do Git. Use o endereço privado `noreply` fornecido pelo seu serviço Git se não quiser publicar seu e-mail.
+By contributing, you agree that your contribution will be licensed under the Apache License 2.0 under its contribution terms. The name and email associated with your commits may become public in Git history. Use the private `noreply` address provided by your Git service if you do not want to publish your email.
 
-## Privacidade e materiais permitidos
+## Privacy and permitted materials
 
-- Use apenas fixtures sintéticas, pequenas e reproduzíveis.
-- Não envie vídeos, áudios, imagens ou transcrições de clientes ou pessoas reais.
-- Remova nomes, e-mails, telefones, identificadores, caminhos de usuário e metadados pessoais de exemplos e logs.
-- Nunca envie chaves, tokens, cookies, arquivos `.env` ou credenciais.
-- Não inclua material de terceiros sem licença compatível e atribuição adequada.
+- Use only small, reproducible, synthetic fixtures.
+- Do not submit video, audio, images, or transcripts from clients or real people.
+- Remove names, email addresses, phone numbers, identifiers, local user paths, and personal metadata from examples and logs.
+- Never submit keys, tokens, cookies, `.env` files, or credentials.
+- Do not include third-party material without a compatible license and proper attribution.
 
-Relate vulnerabilidades e exposições de dados conforme [SECURITY.md](SECURITY.md), sem abrir uma issue pública com o dado sensível.
+Report vulnerabilities and data exposure according to [SECURITY.md](SECURITY.md). Do not open a public issue containing sensitive data.

@@ -1,61 +1,63 @@
-# Editor de Vídeo
+# Video Editor
 
-Skill de instruções para assistentes de IA (formato `SKILL.md`) que edita materiais audiovisuais existentes e entrega um vídeo final verificado: cortes, montagem, legendas, mixagem de áudio, correções, reexportação e efeitos, em 16:9, 9:16 e 1:1. O identificador da skill é `editar-videos-konvert`.
+## About
 
-A skill orienta o assistente; ela não é um editor nem um programa. As operações rodam nas ferramentas do ambiente, principalmente FFmpeg/FFprobe, e HyperFrames quando houver composição em HTML.
+An instruction skill for AI assistants that edits existing audiovisual material and delivers a verified final video. It covers cutting, assembly, captions, audio mixing, corrections, re-exporting, and effects for 16:9, 9:16, and 1:1 formats. The skill identifier is `video-editor-konvert`.
 
-## O que ela faz
+The skill guides an assistant; it is not a video editor or standalone application. Operations run through tools available in the environment, primarily FFmpeg and FFprobe, with optional composition tools when a project needs motion graphics or HTML-based animation.
 
-- **Preserva os originais.** Registra caminho, tamanho, data e SHA-256 antes de editar, trabalha em cópia e grava sempre em arquivo novo (`-n` no FFmpeg).
-- **Inspeciona antes de montar.** Duração, resolução, fps, faixas de áudio e orientação via `ffprobe`.
-- **Edita com critério de montagem.** Cortes por fala e ritmo, J/L-cuts, ducking (`sidechaincompress`), normalização EBU R128 (`loudnorm`), transições (`xfade`), reenquadramento vertical com safe zones.
-- **Remove texto queimado e legendas.** Transcrição, legenda ASS, remoção de marca d'água com checagem antes/depois.
-- **Aplica efeitos com orçamento.** Zoom, speed ramp, flash, glitch, SFX e look de cor, com limite de flashes e verificação por gatilho.
-- **Verifica a exportação.** Propriedades, quadros amostrados, LUFS e True Peak, legibilidade e relato do que não foi inspecionado.
+## Capabilities
 
-Fora do escopo: criar conceito ou roteiro sem mídia e escrever copy de anúncio.
+- **Protects source files.** Records path, size, modification date, and SHA-256 before editing, works from a copy, and always writes to a new output file.
+- **Inspects before editing.** Uses FFprobe to check duration, resolution, frame rate, audio streams, and orientation.
+- **Edits with intent.** Covers speech-based cutting, pacing, J/L-cuts, audio ducking, EBU R128 loudness normalization, transitions, and vertical reframing.
+- **Handles burned-in text and captions.** Includes transcription workflows, ASS captions, and careful removal or replacement of burned-in graphics.
+- **Applies controlled effects.** Covers emphasis zooms, speed ramps, flashes, glitches, SFX, and color treatment with an effect budget and verification at each trigger.
+- **Verifies exports.** Checks technical properties, sampled frames, integrated loudness, true peak, caption readability, and any review limitations.
 
-## Estrutura
+Creating a concept or script without source media and writing advertising copy are outside the scope of this project.
 
-| Caminho | Conteúdo |
+## Repository structure
+
+| Path | Contents |
 |---|---|
-| `SKILL.md` | Instruções centrais e roteamento para as referências |
-| `references/exportacao-e-verificacao.md` | Exportação padrão, sonoridade, receitas FFmpeg e verificação |
-| `references/corte-por-fala-e-qa.md` | Cortes por fala, ritmo, SFX e QA de fala |
-| `references/remocao-e-legendas.md` | Remoção de texto/marca d'água, transcrição e legendas |
-| `references/efeitos-e-acabamento.md` | Receitas de efeitos e verificação |
-| `references/composicao-avancada-ia.md` | Motion design, VFX e mídia gerada por IA como insumo |
-| `references/referencias.md` | Bibliografia e documentação técnica |
-| `agents/revisor-de-exportacao.md` | Prompt reutilizável de revisão independente (não é um agente registrado) |
-| `evals/` | 18 cenários (`evals.json`) e fixtures sintéticas |
+| `SKILL.md` | Core instructions and routing to detailed references |
+| `references/export-and-verification.md` | Export defaults, loudness, FFmpeg recipes, and delivery checks |
+| `references/speech-editing-and-qa.md` | Speech cuts, pacing, SFX, and dialogue QA |
+| `references/removal-and-captions.md` | Burned-in text removal, transcription, and captions |
+| `references/effects-and-finishing.md` | Effect recipes and visual verification |
+| `references/advanced-composition-and-ai.md` | Motion design, VFX, and generated media as source material |
+| `references/references.md` | Technical and creative research sources |
+| `agents/export-reviewer.md` | Reusable independent export-review prompt |
+| `evals/` | Scenario specification and synthetic fixtures |
 
-## Requisitos
+## Requirements
 
-- FFmpeg e FFprobe no `PATH`. As receitas foram testadas com FFmpeg 9.0.2; confirme as opções com `ffmpeg -h` na versão instalada.
-- Opcional: HyperFrames, para títulos animados e composição em HTML.
-- Baixar arquivos, instalar pacotes, enviar mídia a serviços externos ou usar sessão do navegador exige pedido explícito do usuário.
+- FFmpeg and FFprobe available on `PATH`. The recipes were originally checked with FFmpeg 9.0.2; confirm options against the installed version.
+- Optional composition software for animated titles, synchronized captions, or HTML-based scenes.
+- Explicit user authorization before downloading files, installing packages, sending media to external services, or using a browser session.
 
-## Instalação
+## Installation
 
-A raiz do repositório é a própria skill. Copie-a para o diretório de skills do seu assistente, em uma pasta com o nome da skill. Exemplo para o Claude Code (escopo pessoal):
+The repository root is the skill directory. Copy the relevant files into your assistant's skill directory:
 
 ```bash
-mkdir -p ~/.claude/skills/editar-videos-konvert
-cp -r SKILL.md references agents ~/.claude/skills/editar-videos-konvert/
+mkdir -p ~/.local/share/ai-skills/video-editor-konvert
+cp -r SKILL.md references agents ~/.local/share/ai-skills/video-editor-konvert/
 ```
 
-`evals/` é opcional e só serve para testes. Instalar a skill não comprova que um modelo a carregou ou a seguiu.
+Adjust the destination to the conventions of your assistant or runtime. The `evals/` directory is optional and intended for evaluation work. Installing the files does not prove that a model loaded or followed the instructions.
 
-## Avaliação
+## Evaluation
 
-`evals/evals.json` é uma **especificação de cenários**, não uma suíte automatizada: nenhum caso foi executado como teste independente de comportamento do agente. Os comandos verificados com fixtures sintéticas estão descritos em `execution_notes`. As fixtures são sintéticas, sem pessoas, marcas ou dados reais; veja `evals/fixtures/LEIAME.md`.
+`evals/evals.json` is a scenario specification rather than an automated behavioral test suite. Commands verified against synthetic fixtures are documented in `execution_notes`. The fixtures contain no real people, brands, or personal data; see `evals/fixtures/README.md`.
 
-## Como contribuir
+## Contributing
 
-Contribuições são bem-vindas por issues e pull requests. Leia [CONTRIBUTING.md](CONTRIBUTING.md) antes de enviar mudanças e não publique mídias de clientes, credenciais, dados pessoais ou caminhos locais em exemplos, logs e fixtures.
+Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting changes. Do not publish client media, credentials, personal data, or local user paths in examples, logs, or fixtures.
 
-## Licença
+## License
 
-Copyright 2026 Editor de Vídeo contributors. Distribuído sob a [Apache License 2.0](LICENSE); atribuição em [NOTICE](NOTICE).
+Copyright 2026 Video Editor contributors. Licensed under the [Apache License 2.0](LICENSE); attribution information is in [NOTICE](NOTICE).
 
-Obras, ferramentas e marcas de terceiros citadas nas referências pertencem aos seus donos; a citação não as relicencia nem implica endorsement.
+Third-party works, tools, and trademarks referenced by this project remain the property of their respective owners. A reference does not relicense a third-party work or imply endorsement.
