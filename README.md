@@ -58,6 +58,6 @@ Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) be
 
 ## License
 
-Copyright 2026 Video Editor contributors. Licensed under the [Apache License 2.0](LICENSE); attribution information is in [NOTICE](NOTICE).
+Copyright 2026 andreischuaste12-ctrl. Licensed under the [Apache License 2.0](LICENSE); attribution information is in [NOTICE](NOTICE).
 
 Third-party works, tools, and trademarks referenced by this project remain the property of their respective owners. A reference does not relicense a third-party work or imply endorsement.
